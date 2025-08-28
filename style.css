@@ -1,0 +1,248 @@
+/* Importando uma fonte moderna do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap'); /* Adicionei '700' para negritos */
+
+/* Variáveis de Cores - Tema Escuro Moderno (Preto e Azul Bebê) */
+:root {
+    --cor-primaria: #A1C9F4; /* Azul Bebê - Destaque */
+    --cor-secundaria: #f0f0f0; /* Branco Suave - Texto Principal */
+    --cor-fundo: #121212; /* Fundo Preto Escuro */
+    --cor-fundo-secao: #1a1a1a; /* Preto um pouco mais claro para seções */
+    --cor-cartao: #2a2a2a; /* Cinza Escuro para os cards */
+    --cor-acento-escuro: #000000; /* Preto puro para detalhes */
+    --sombra-cartao: 0 6px 12px rgba(0, 0, 0, 0.4); /* Sombra mais pronunciada para fundo escuro */
+    --borda-fina: 1px solid rgba(255, 255, 255, 0.1); /* Borda sutil para elementos */
+}
+
+/* Estilos Globais */
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    background-color: var(--cor-fundo); /* Fundo preto */
+    color: var(--cor-secundaria); /* Texto branco suave */
+    scroll-behavior: smooth; /* Rolagem suave */
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    font-weight: 700; /* Mais negrito para títulos */
+    color: var(--cor-primaria); /* Azul bebê para títulos, para destaque */
+    margin-bottom: 15px;
+}
+
+h2 {
+    border-bottom: 2px solid var(--cor-primaria); /* Borda azul bebê */
+    padding-bottom: 10px;
+    margin-bottom: 30px; /* Mais espaço após o título da seção */
+    text-align: center; /* Centraliza títulos de seção */
+    text-transform: uppercase; /* Deixa em maiúsculas */
+    letter-spacing: 1.5px; /* Espaçamento entre letras */
+}
+
+a {
+    color: var(--cor-primaria); /* Links em azul bebê */
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+a:hover {
+    color: lighten(var(--cor-primaria), 10%); /* Azul bebê mais claro ao passar o mouse */
+    transform: translateY(-2px); /* Pequeno efeito de levantamento */
+}
+
+/* Cabeçalho com Design Moderno e Efeito de Gradiente/Brilho */
+header {
+    background: linear-gradient(135deg, var(--cor-fundo-secao) 0%, #0a0a0a 100%); /* Gradiente escuro */
+    color: var(--cor-secundaria);
+    padding: 100px 0; /* Mais padding para um visual imponente */
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Sombra forte */
+    animation: fadeIn 1s ease-out; /* Animação de entrada */
+}
+
+/* Animação para o cabeçalho */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Formas Geométricas (agora mais brilhantes/sutis no fundo escuro) */
+header::before, header::after {
+    content: '';
+    position: absolute;
+    background: var(--cor-primaria); /* Formas em azul bebê para destaque */
+    opacity: 0.08; /* Mais sutil no fundo escuro */
+    filter: blur(50px); /* Efeito de brilho */
+}
+
+header::before {
+    top: -80px;
+    left: -80px;
+    width: 250px;
+    height: 250px;
+    transform: rotate(45deg);
+    border-radius: 20%;
+}
+
+header::after {
+    bottom: -120px;
+    right: -120px;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%; /* Círculo */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 3.5em; /* Título maior */
+    color: var(--cor-primaria); /* Azul bebê */
+    text-shadow: 0 0 15px rgba(161, 201, 244, 0.4); /* Sombra de brilho */
+    position: relative;
+    z-index: 1;
+}
+
+header p {
+    font-size: 1.4em; /* Parágrafo maior */
+    color: var(--cor-secundaria);
+    opacity: 0.95;
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+    margin: 15px auto 0;
+}
+
+/* Seções */
+section {
+    padding: 60px 0; /* Mais padding */
+    background-color: var(--cor-fundo-secao); /* Fundo das seções um pouco mais claro que o body */
+    margin-bottom: 20px; /* Espaço entre seções */
+    border-radius: 10px; /* Cantos arredondados */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Sombra sutil */
+}
+
+/* Grid de Habilidades e Projetos */
+.habilidades-grid, .projetos-grid, .cursos-grid { /* Adicionado cursos-grid */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Cards um pouco maiores */
+    gap: 25px; /* Mais espaço entre cards */
+}
+
+.habilidade, .projeto-card, .curso-card { /* Adicionado curso-card */
+    background-color: var(--cor-cartao); /* Cor dos cards */
+    padding: 25px; /* Mais padding */
+    border-radius: 10px;
+    box-shadow: var(--sombra-cartao);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    border: var(--borda-fina); /* Borda sutil */
+    display: flex; /* Para alinhar conteúdo dos cards */
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.habilidade:hover, .projeto-card:hover, .curso-card:hover {
+    transform: translateY(-8px) scale(1.02); /* Efeito de levantamento e leve escala */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6); /* Sombra mais intensa */
+    background-color: #3a3a3a; /* Fundo do card um pouco mais claro no hover */
+}
+
+.projeto-card h3, .curso-card h3 {
+    color: var(--cor-primaria); /* Títulos de cards em azul bebê */
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.projeto-card p, .curso-card p {
+    color: rgba(240, 240, 240, 0.8); /* Descrições mais claras */
+    font-size: 0.95em;
+    flex-grow: 1; /* Faz o parágrafo ocupar o espaço restante */
+}
+
+.projeto-card .tecnologias, .curso-card .detalhes {
+    font-size: 0.85em;
+    color: rgba(240, 240, 240, 0.6);
+    margin-top: 15px;
+}
+.projeto-card .links a {
+    margin-right: 15px;
+    font-weight: 600;
+}
+.projeto-card .links {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: var(--borda-fina);
+}
+
+
+/* Rodapé */
+footer {
+    background-color: var(--cor-acento-escuro); /* Preto puro para o rodapé */
+    color: rgba(255, 255, 255, 0.8); /* Texto um pouco mais suave */
+    text-align: center;
+    padding: 30px 0; /* Mais padding */
+    margin-top: 50px;
+    border-top: var(--borda-fina); /* Borda superior sutil */
+    font-size: 0.9em;
+}
+
+footer a {
+    color: var(--cor-primaria);
+    font-weight: 600;
+}
+footer a:hover {
+    color: lighten(var(--cor-primaria), 15%);
+}
+
+/* Estilos para a Seção de Cursos com Logo da Alura */
+#cursos .cursos-header {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centraliza o título e a logo */
+    gap: 20px; /* Mais espaço entre o título e a logo */
+    margin-bottom: 40px; /* Mais espaço abaixo do cabeçalho */
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--cor-primaria); /* Borda azul bebê */
+}
+
+#cursos .cursos-header h2 {
+    margin-bottom: 0;
+    border-bottom: none; /* Remove a borda para não duplicar */
+    color: var(--cor-secundaria); /* Título em branco suave */
+    text-transform: capitalize; /* Volta a capitalização normal para o h2 interno */
+    letter-spacing: normal;
+}
+
+#cursos .cursos-header img {
+    height: 50px; /* Logo um pouco maior */
+    width: auto;
+    filter: brightness(1.2); /* Deixa a logo um pouco mais brilhante no fundo escuro */
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5em;
+    }
+    header p {
+        font-size: 1.1em;
+    }
+    h2 {
+        font-size: 1.8em;
+    }
+    .habilidades-grid, .projetos-grid, .cursos-grid {
+        grid-template-columns: 1fr; /* Coloca os cards em coluna única em telas menores */
+    }
+    #cursos .cursos-header {
+        flex-direction: column; /* Empilha título e logo em telas menores */
+        gap: 10px;
+    }
+    #cursos .cursos-header h2 {
+        text-align: center;
+    }
+}
