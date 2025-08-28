@@ -1,7 +1,6 @@
-/* Importando uma fonte moderna do Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap'); /* Adicionei '700' para negritos */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
 
-/* Variáveis de Cores - Tema Escuro Moderno (Preto e Azul Bebê) */
 :root {
     --cor-primaria: #A1C9F4; /* Azul Bebê - Destaque */
     --cor-secundaria: #f0f0f0; /* Branco Suave - Texto Principal */
@@ -9,18 +8,21 @@
     --cor-fundo-secao: #1a1a1a; /* Preto um pouco mais claro para seções */
     --cor-cartao: #2a2a2a; /* Cinza Escuro para os cards */
     --cor-acento-escuro: #000000; /* Preto puro para detalhes */
-    --sombra-cartao: 0 6px 12px rgba(0, 0, 0, 0.4); /* Sombra mais pronunciada para fundo escuro */
-    --borda-fina: 1px solid rgba(255, 255, 255, 0.1); /* Borda sutil para elementos */
+    --sombra-cartao: 0 6px 12px rgba(0, 0, 0, 0.4);
+    --borda-fina: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Estilos Globais */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Ajuste para o menu fixo */
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     margin: 0;
-    background-color: var(--cor-fundo); /* Fundo preto */
-    color: var(--cor-secundaria); /* Texto branco suave */
-    scroll-behavior: smooth; /* Rolagem suave */
+    background-color: var(--cor-fundo);
+    color: var(--cor-secundaria);
 }
 
 .container {
@@ -29,220 +31,237 @@ body {
     padding: 20px;
 }
 
-h1, h2, h3 {
-    font-weight: 700; /* Mais negrito para títulos */
-    color: var(--cor-primaria); /* Azul bebê para títulos, para destaque */
+h1, h2, h3, h4 {
+    font-weight: 700;
+    color: var(--cor-primaria);
     margin-bottom: 15px;
 }
 
 h2 {
-    border-bottom: 2px solid var(--cor-primaria); /* Borda azul bebê */
+    border-bottom: 2px solid var(--cor-primaria);
     padding-bottom: 10px;
-    margin-bottom: 30px; /* Mais espaço após o título da seção */
-    text-align: center; /* Centraliza títulos de seção */
-    text-transform: uppercase; /* Deixa em maiúsculas */
-    letter-spacing: 1.5px; /* Espaçamento entre letras */
+    margin-bottom: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+p.section-intro {
+    text-align: center;
+    margin-top: -15px;
+    margin-bottom: 30px;
+    color: rgba(240, 240, 240, 0.8);
 }
 
 a {
-    color: var(--cor-primaria); /* Links em azul bebê */
+    color: var(--cor-primaria);
     text-decoration: none;
     transition: color 0.3s ease, transform 0.2s ease;
 }
 
 a:hover {
-    color: lighten(var(--cor-primaria), 10%); /* Azul bebê mais claro ao passar o mouse */
-    transform: translateY(-2px); /* Pequeno efeito de levantamento */
+    color: #cde4fa; /* Azul bebê mais claro */
+    transform: translateY(-2px);
 }
 
-/* Cabeçalho com Design Moderno e Efeito de Gradiente/Brilho */
-header {
-    background: linear-gradient(135deg, var(--cor-fundo-secao) 0%, #0a0a0a 100%); /* Gradiente escuro */
+.navbar {
+    background-color: rgba(26, 26, 26, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: var(--borda-fina);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.nav-logo {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--cor-primaria);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 25px;
+}
+
+.nav-link {
+    font-weight: 600;
     color: var(--cor-secundaria);
-    padding: 100px 0; /* Mais padding para um visual imponente */
+    padding: 5px 0;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--cor-primaria);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+header {
+    background: linear-gradient(135deg, var(--cor-fundo-secao) 0%, #0a0a0a 100%);
+    color: var(--cor-secundaria);
+    padding: 180px 0 120px 0; /* Mais padding no topo para o menu fixo */
     text-align: center;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Sombra forte */
-    animation: fadeIn 1s ease-out; /* Animação de entrada */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 1s ease-out;
 }
 
-/* Animação para o cabeçalho */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-20px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Formas Geométricas (agora mais brilhantes/sutis no fundo escuro) */
 header::before, header::after {
     content: '';
     position: absolute;
-    background: var(--cor-primaria); /* Formas em azul bebê para destaque */
-    opacity: 0.08; /* Mais sutil no fundo escuro */
-    filter: blur(50px); /* Efeito de brilho */
+    background: var(--cor-primaria);
+    opacity: 0.08;
+    filter: blur(50px);
 }
 
-header::before {
-    top: -80px;
-    left: -80px;
-    width: 250px;
-    height: 250px;
-    transform: rotate(45deg);
-    border-radius: 20%;
-}
+header::before { top: -80px; left: -80px; width: 250px; height: 250px; transform: rotate(45deg); border-radius: 20%; }
+header::after { bottom: -120px; right: -120px; width: 350px; height: 350px; border-radius: 50%; }
 
-header::after {
-    bottom: -120px;
-    right: -120px;
-    width: 350px;
-    height: 350px;
-    border-radius: 50%; /* Círculo */
-}
+header h1 { margin: 0; font-size: 3.5em; color: var(--cor-primaria); text-shadow: 0 0 15px rgba(161, 201, 244, 0.4); position: relative; z-index: 1; }
+header p { font-size: 1.4em; color: var(--cor-secundaria); opacity: 0.95; position: relative; z-index: 1; max-width: 600px; margin: 15px auto 0; }
 
-header h1 {
-    margin: 0;
-    font-size: 3.5em; /* Título maior */
-    color: var(--cor-primaria); /* Azul bebê */
-    text-shadow: 0 0 15px rgba(161, 201, 244, 0.4); /* Sombra de brilho */
-    position: relative;
-    z-index: 1;
-}
-
-header p {
-    font-size: 1.4em; /* Parágrafo maior */
-    color: var(--cor-secundaria);
-    opacity: 0.95;
-    position: relative;
-    z-index: 1;
-    max-width: 600px;
-    margin: 15px auto 0;
-}
-
-/* Seções */
 section {
-    padding: 60px 0; /* Mais padding */
-    background-color: var(--cor-fundo-secao); /* Fundo das seções um pouco mais claro que o body */
-    margin-bottom: 20px; /* Espaço entre seções */
-    border-radius: 10px; /* Cantos arredondados */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Sombra sutil */
+    padding: 60px 20px;
+    background-color: var(--cor-fundo-secao);
+    margin: 0 auto 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    max-width: 900px;
+}
+main .container {
+    padding: 0;
 }
 
-/* Grid de Habilidades e Projetos */
-.habilidades-grid, .projetos-grid, .cursos-grid { /* Adicionado cursos-grid */
+
+.habilidades-grid, .cursos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Cards um pouco maiores */
-    gap: 25px; /* Mais espaço entre cards */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
 }
 
-.habilidade, .projeto-card, .curso-card { /* Adicionado curso-card */
-    background-color: var(--cor-cartao); /* Cor dos cards */
-    padding: 25px; /* Mais padding */
+.habilidade, .curso-card {
+    background-color: var(--cor-cartao);
+    padding: 25px;
     border-radius: 10px;
     box-shadow: var(--sombra-cartao);
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-    border: var(--borda-fina); /* Borda sutil */
-    display: flex; /* Para alinhar conteúdo dos cards */
+    border: var(--borda-fina);
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.habilidade:hover, .projeto-card:hover, .curso-card:hover {
-    transform: translateY(-8px) scale(1.02); /* Efeito de levantamento e leve escala */
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6); /* Sombra mais intensa */
-    background-color: #3a3a3a; /* Fundo do card um pouco mais claro no hover */
+.habilidade:hover, .curso-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
+    background-color: #3a3a3a;
 }
 
-.projeto-card h3, .curso-card h3 {
-    color: var(--cor-primaria); /* Títulos de cards em azul bebê */
-    margin-top: 0;
-    margin-bottom: 10px;
-}
-
-.projeto-card p, .curso-card p {
-    color: rgba(240, 240, 240, 0.8); /* Descrições mais claras */
-    font-size: 0.95em;
-    flex-grow: 1; /* Faz o parágrafo ocupar o espaço restante */
-}
-
-.projeto-card .tecnologias, .curso-card .detalhes {
-    font-size: 0.85em;
-    color: rgba(240, 240, 240, 0.6);
-    margin-top: 15px;
-}
-.projeto-card .links a {
-    margin-right: 15px;
-    font-weight: 600;
-}
-.projeto-card .links {
-    margin-top: 20px;
-    padding-top: 15px;
-    border-top: var(--borda-fina);
-}
-
-
-/* Rodapé */
-footer {
-    background-color: var(--cor-acento-escuro); /* Preto puro para o rodapé */
-    color: rgba(255, 255, 255, 0.8); /* Texto um pouco mais suave */
-    text-align: center;
-    padding: 30px 0; /* Mais padding */
-    margin-top: 50px;
-    border-top: var(--borda-fina); /* Borda superior sutil */
-    font-size: 0.9em;
-}
-
-footer a {
+.habilidade h3, .curso-card h3 {
     color: var(--cor-primaria);
+    margin-top: 0;
+}
+.curso-card p {
+    margin: 0;
+}
+.curso-card a {
     font-weight: 600;
 }
-footer a:hover {
-    color: lighten(var(--cor-primaria), 15%);
-}
 
-/* Estilos para a Seção de Cursos com Logo da Alura */
 #cursos .cursos-header {
     display: flex;
     align-items: center;
-    justify-content: center; /* Centraliza o título e a logo */
-    gap: 20px; /* Mais espaço entre o título e a logo */
-    margin-bottom: 40px; /* Mais espaço abaixo do cabeçalho */
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 10px;
     padding-bottom: 15px;
-    border-bottom: 2px solid var(--cor-primaria); /* Borda azul bebê */
+    border-bottom: 2px solid var(--cor-primaria);
 }
 
-#cursos .cursos-header h2 {
-    margin-bottom: 0;
-    border-bottom: none; /* Remove a borda para não duplicar */
-    color: var(--cor-secundaria); /* Título em branco suave */
-    text-transform: capitalize; /* Volta a capitalização normal para o h2 interno */
-    letter-spacing: normal;
+#cursos .cursos-header h2 { margin-bottom: 0; border-bottom: none; color: var(--cor-secundaria); text-transform: capitalize; letter-spacing: normal; }
+#cursos .cursos-header img { height: 50px; width: auto; filter: brightness(1.2); }
+
+#contato .contato-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
 }
 
-#cursos .cursos-header img {
-    height: 50px; /* Logo um pouco maior */
-    width: auto;
-    filter: brightness(1.2); /* Deixa a logo um pouco mais brilhante no fundo escuro */
+#contato .contato-links a {
+    font-size: 1.2em;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: 2px solid var(--cor-primaria);
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Estilos responsivos */
+#contato .contato-links a:hover {
+    background-color: var(--cor-primaria);
+    color: var(--cor-fundo);
+}
+#contato .contato-links i {
+    margin-right: 8px;
+}
+
+
+footer {
+    background-color: var(--cor-acento-escuro);
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 50px;
+    border-top: var(--borda-fina);
+    font-size: 0.9em;
+}
+
 @media (max-width: 768px) {
-    header h1 {
-        font-size: 2.5em;
-    }
-    header p {
-        font-size: 1.1em;
-    }
-    h2 {
-        font-size: 1.8em;
-    }
-    .habilidades-grid, .projetos-grid, .cursos-grid {
-        grid-template-columns: 1fr; /* Coloca os cards em coluna única em telas menores */
-    }
-    #cursos .cursos-header {
-        flex-direction: column; /* Empilha título e logo em telas menores */
+    /* MANTÉM O NAVBAR HORIZONTAL, mas ajusta os espaçamentos e fontes */
+    .nav-menu {
         gap: 10px;
     }
-    #cursos .cursos-header h2 {
-        text-align: center;
+    .nav-link {
+        font-size: 0.85em; /* Diminui a fonte para caber em telas menores */
     }
+    .nav-logo {
+        font-size: 1.5em;
+    }
+
+    header { padding: 140px 0 80px 0; }
+    header h1 { font-size: 2.5em; }
+    header p { font-size: 1.1em; }
+    h2 { font-size: 1.8em; }
+    .habilidades-grid, .cursos-grid { grid-template-columns: 1fr; }
+    #cursos .cursos-header { flex-direction: column; gap: 10px; }
+    #contato .contato-links { flex-direction: column; align-items: center; }
 }
